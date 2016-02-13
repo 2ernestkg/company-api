@@ -40,7 +40,7 @@ public class Company implements Serializable {
   @Embedded
   @Valid
   private ContactDetail contactDetail;
-  @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.PERSIST})
+  @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
   @JoinTable(
           name = "company_owners",
           joinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"),

@@ -47,7 +47,7 @@ public class CompanyRestController {
     }
     Company savedCompany = null;
     try {
-      savedCompany = companyDao.save(company);
+      companyDao.save(company);
     } catch (Exception ex) {
       return handleException(ex);
     }
@@ -73,15 +73,9 @@ public class CompanyRestController {
     if (updateCompany == null) {
       return new ResponseEntity<Company>(HttpStatus.NOT_FOUND);
     }
-    updateCompany.setContactDetail(company.getContactDetail());
-    updateCompany.setName(company.getName());
-    updateCompany.setAddress(company.getAddress());
-    updateCompany.getOwners().clear();
-    for (Beneficiar beneficiar : company.getOwners()) {
-      updateCompany.addOwner(beneficiar);
-    }
+    company.setId(updateCompany.getId());
     try {
-      updateCompany = companyDao.save(updateCompany);
+      companyDao.save(company);
     } catch (Exception ex) {
       return handleException(ex);
     }
@@ -105,7 +99,7 @@ public class CompanyRestController {
     }
     company.addOwner(beneficiar);
     try {
-      company = companyDao.save(company);
+      companyDao.save(company);
     } catch (Exception ex) {
       handleException(ex);
     }
