@@ -11,7 +11,7 @@ There is two object models(tables) are provided through this API:
 #### Company
 
 | Column		| Type		 	| M	| Description |
-| ------------- |:-------------:| - | ----------- |
+| --------- | --------- | - | ----------- |
 | id         	| int		 	| 	| Identifier given to this company |
 | name       	| varchar(50)	| M	| Name of the company |
 | address    	| varchar(150)	| M	| Address of the company |
@@ -23,7 +23,7 @@ There is two object models(tables) are provided through this API:
 
 #### Beneficiar
 | Name      | Type      | M | Description |
-| --------- |:---------:| - | ----------- |
+| --------- | --------- | - | ----------- |
 | name      | varchar(50) | M | Name of beneficiar |
 
 
