@@ -10,20 +10,21 @@ There is two object models(tables) are provided through this API:
 
 #### Company
 
-| Column		| Type		 	| M	| Description |
-| --------- | --------- | - | ----------- |
-| id         	| int		 	| 	| Identifier given to this company |
-| name       	| varchar(50)	| M	| Name of the company |
-| address    	| varchar(150)	| M	| Address of the company |
-| city			| varchar(50)	| M	| City where company is located |
-| country		| varchar(50) 	| M	| Country where company is located |
-| email			| varchar(50)	| 	| Email address of the company |
+| Column				| Type		 			| M	| Description |
+| ------------- | ------------- | - | ----------- |
+| id          	| int		 				| 	| Identifier given to this company |
+| name      		| varchar(50)		| M	| Name of the company |
+| address   		| varchar(150)	| M	| Address of the company |
+| city					| varchar(50)		| M	| City where company is located |
+| country				| varchar(50) 	| M	| Country where company is located |
+| email					| varchar(50)		| 	| Email address of the company |
 | phone_number 	| varchar(50)   | 	| Contact phone number |
-| owners		| array			| 	| Owners |
+| owners				| array					| 	| List of beneficiars of this company |
 
 #### Beneficiar
-| Name      | Type      | M | Description |
-| --------- | --------- | - | ----------- |
+
+| Name      | Type      	| M | Description |
+| --------- | ----------- | - | ----------- |
 | name      | varchar(50) | M | Name of beneficiar |
 
 
