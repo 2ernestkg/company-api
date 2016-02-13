@@ -8,6 +8,8 @@ There is two object models(tables) are provided through this API:
 * Company
 * Beneficiar
 
+---
+
 #### Company
 
 | Column				| Type		 			| M	| Description |
