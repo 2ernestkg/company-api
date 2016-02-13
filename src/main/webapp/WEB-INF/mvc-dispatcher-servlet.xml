@@ -25,7 +25,6 @@
 
   <!-- Embedded HSQL database -->
   <jdbc:embedded-database id="dataSource" type="HSQL">
-    <jdbc:script location="classpath:db/sql/create-db.sql"/>
   </jdbc:embedded-database>
 
   <!-- Add JPA support -->
@@ -35,7 +34,7 @@
     <property name="jpaVendorAdapter">
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <!-- Create the database, please -->
-        <!--property name="generateDdl" value="true"/> -->
+        <property name="generateDdl" value="true"/>
       </bean>
     </property>
   </bean>
