@@ -7,6 +7,8 @@ import kg.ernest.company.validator.Phone;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import java.io.Serializable;
 
@@ -22,6 +24,8 @@ public class ContactDetail implements Serializable {
   @JsonProperty(value = PHONE_NUMBER_KEY)
   @Column(name = PHONE_NUMBER_KEY)
   @Phone
+  @Min(5)
+  @Max(150)
   private String phoneNumber;
 
   public ContactDetail() {

@@ -2,6 +2,7 @@ package kg.ernest.company.rest;
 
 import kg.ernest.company.dao.BeneficiarDao;
 import kg.ernest.company.dao.CompanyDao;
+import kg.ernest.company.dao.Pageable;
 import kg.ernest.company.dao.model.Beneficiar;
 import kg.ernest.company.dao.model.Company;
 import org.hibernate.exception.ConstraintViolationException;
@@ -20,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/company")
@@ -32,12 +32,13 @@ public class CompanyRestController {
   private BeneficiarDao beneficiarDao;
 
   @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<List<Company>> getList(@RequestParam(value = "offset", defaultValue = "0") int offset,
+  public ResponseEntity<Pageable<Company>> getList(@RequestParam(value = "page", defaultValue = "1") int page,
                                                @RequestParam(value = "limit", defaultValue = "0") int limit) {
+    int offset = (page - 1) * limit;
     if (limit != 0) {
-      return new ResponseEntity<List<Company>>(companyDao.getList(offset, limit), HttpStatus.OK);
+      return new ResponseEntity<Pageable<Company>>(companyDao.getList(offset, limit), HttpStatus.OK);
     }
-    return new ResponseEntity<List<Company>>(companyDao.getList(), HttpStatus.OK);
+    return new ResponseEntity<Pageable<Company>>(companyDao.getList(), HttpStatus.OK);
   }
 
   @RequestMapping(value = "", method = RequestMethod.POST)

@@ -26,15 +26,21 @@ public class CompanyDao {
     return company;
   }
 
-  public List<Company> getList() {
+  public Pageable<Company> getList() {
     return getList(0, DEFAULT_LIMIT);
   }
 
-  public List<Company> getList(int offset, int limit) {
+  public Pageable<Company> getList(int offset, int limit) {
+    Query countQuery = em.createQuery("SELECT count(x.id) FROM Company x");
+
+    long counts = ((Long) countQuery.getSingleResult()).longValue();
+
     Query query = em.createQuery("select company from Company company order by company.id asc");
-    return query.setFirstResult(offset)
+    List<Company> list =query.setFirstResult(offset)
             .setMaxResults(limit)
             .getResultList();
+
+    return new Pageable<Company>(list, counts);
   }
 
   public Company get(int id) {
